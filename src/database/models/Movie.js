@@ -11,7 +11,7 @@ module.exports = function (sequelize, dataTypes) {
         title: {
             type: dataTypes.STRING
         },
-        releaseDate:{
+        releaseDate: {
             type: dataTypes.DATE
         },
 
@@ -24,7 +24,7 @@ module.exports = function (sequelize, dataTypes) {
         genreId: {
             type: dataTypes.INTEGER
         },
-        
+
     }
 
     let config = {
@@ -38,18 +38,18 @@ module.exports = function (sequelize, dataTypes) {
 
     Movie.associate = function (models) {
         Movie.belongsTo(models.Genre, {
-            as: 'genre',
+            as: 'genres',
             foreignKey: 'genreId'
         });
 
-        Movie.belongsToMany(models.Actor, {
-                as: 'characters',
-                through: 'characters_movie',
-                foreignKey: 'movieId',
-                otherKey: 'actorId',
-                timestamps: false
-            });
-        }
+        Movie.belongsToMany(models.Character, {
+            as: 'characters',
+            through: 'character_movie',
+            foreignKey: 'movieId',
+            otherKey: 'characterId',
+            timestamps: false
+        });
+    }
 
     return Movie
 }

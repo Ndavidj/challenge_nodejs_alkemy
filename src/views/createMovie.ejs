@@ -1,0 +1,34 @@
+<%- include('partials/header') %>
+
+    <h1>Crear pelicula</h1>
+    <form action="/movies/create" method="POST">
+
+        <div>
+            <label for="">Titulo</label>
+            <input type="text" name="title">
+        </div>
+
+        <div>
+            <label for="">Rating</label>
+            <input type="text" name="rating">
+        </div>
+
+        <div>
+            <label for="">Fecha de estreno</label>
+            <input type="date" name="releaseDate">
+        </div>
+
+        <div>
+            <label for="image">Poster de la pelicula</label>
+            <input type="file" name="imageM" class="imageM" id="imageM">
+        </div>
+
+
+
+        <button type="submit"> Crear </button>
+        <button type="reset">Reiniciar datos</button>
+
+
+    </form>
+
+    <%- include('partials/footer') %>

@@ -4,7 +4,7 @@ const path = require ("path");
 const methodOverride = require('method-override');
 const session = require ("express-session");
 const cookieParser = require('cookie-parser');
-/* const userLoggedMiddleware = require('./middlewares/routes/users/userLoggedMiddleware') */
+// const userLoggedMiddleware = require('./middlewares/users/userLoggedMiddleware')
 
 // Middlewares application importados y nativos 
 
@@ -25,26 +25,26 @@ app.use(methodOverride("_method"));
 app.set('views', path.resolve(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-/* app.use(userLoggedMiddleware); */
+// app.use(userLoggedMiddleware);
 
 // --Routes--
 
 // Main routes
-const mainRouter = require("./routes/mainRouter.js")
+const mainRouter = require("./routes/index.js")
 app.use("/", mainRouter);
 
 // Users routes
-const usersRouter = require("./routes/usersRouter.js");
+const usersRouter = require("./routes/users.js");
 app.use("/users", usersRouter);
 
-// Products routes
-const productsRouter = require("./routes/productsRouter.js");
-app.use("/products", productsRouter);
+// Movies routes
+const moviesRouter = require("./routes/movies.js");
+app.use("/movies", moviesRouter);
 
-/* // Error 404 handler
+// Error 404 handler
 app.use((req, res, next) => {
-    res.status(404).render('error404')
-}) */
+    res.status(404).render('error')
+})
 
 // Listen to server for server up!
 app.set("port", process.env.PORT || 5000);

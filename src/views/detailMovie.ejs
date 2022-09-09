@@ -1,0 +1,49 @@
+<%- include('partials/header') %>
+
+    <h1>
+        <%= movies.title %>
+    </h1>
+
+    <ul>
+        <li>Fecha de estreno: <%= movies.releaseDate %>
+        </li>
+        <li>Rating: <%= movies.rating %>
+        </li>
+
+        
+
+        <!-- CONTINUAR EN DETALLE DE PELICULA PARA QUE TRAIGA EL GENERO -->
+
+
+
+        <!-- para el genero, obtengo de la relacion genero y del genero pido el nombre -->
+        <li>Genero: <%= movies.genres.name %>
+        </li>
+        <!-- Por ultimo los actores, pero como los actores pueden ser muchos ya que la relacion asi lo indica .Para cada uno de los actores, haremos un for que va a ir desde el primer actor hasta la cantidad de actores que tenga la pelicula. Osea se pide de la pelicula, la relacion en este caso actores y pido la cantidad. y por cada actor imprimo un li que imprima de la pelicula los actores que correspondan [i], el primer y segundo nombre -->
+        <li>
+            Actores
+            <ul>
+                <% for( let i=0; i < movies.characters.length; i++ ) { %>
+                    <li>
+                        <%= movies.characters[i].name %>
+                            <%= movies.characters[i].image %>
+                    </li>
+
+                    <% } %>
+            </ul>
+        </li>
+    </ul>
+
+    <!-- Para el update, se agregara un boton al final para editar. Que estara cubierto por un hipervinculo que llevara a /peliculas/editar. Hay que colocar que pelicula se quiere editar y eso se hace mediante el id asi que se imprime luego del /editar-->
+    <a href="/movies/edit/<%= movies.id %> ">
+        <button>editar</button>
+    </a>
+
+    <!-- Para el delete, se agregara un boton de tipo submit al final para borrar. Hay que colocar que pelicula se quiere borrar y eso se hace mediante el id asi que se imprime luego del /borrar-->
+    <!-- Se hara atraves de un formulario par hacerlo tipo post donde el action sera a /peliculas/borrar y se aclarara que pelicula se esta queriendo borrar-->
+
+    <form action="/movies/delete/<%= movies.id %>" method="POST">
+        <button type="submit">Borrar</button>
+
+    </form>
+    <%- include('partials/footer') %>

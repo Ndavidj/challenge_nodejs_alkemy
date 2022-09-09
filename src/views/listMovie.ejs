@@ -1,0 +1,12 @@
+<%- include('partials/header') %>
+
+    <h1> Listado de peliculas </h1>
+    <!-- El for es porque no se cuantas peliculas son. y por cada una de las peliculas se imprimira un li. adentro del li vamos a imprimir de la pelicula en cuestion el titulo -->
+    <!-- Para ir al detalle de cada una de las peliculas cada li sera un hipervinculo al mismo. Osea a /peliculas y a su id correspondiente -->
+        <ul>
+            <% for( let i = 0; i < movies.length; i++ ) { %>
+                <li> <a href="/movies/<%= movies[i].id %> "> <%= movies[i].title %></a></li>
+            <% } %>
+        </ul> 
+    
+        <%- include('partials/footer') %>

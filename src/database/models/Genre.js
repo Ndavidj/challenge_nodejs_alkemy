@@ -33,5 +33,5 @@ module.exports = function (sequelize, dataTypes) {
         });
     }
 
-    return Character
+    return Genre
 }

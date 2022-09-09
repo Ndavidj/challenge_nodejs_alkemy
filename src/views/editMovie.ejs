@@ -1,0 +1,52 @@
+<%- include('partials/header') %>
+    <!-- En el proceso de edicion los values deben estar rellenos. Debero llevar impreso el campo en cuestion-->
+    <h1>Editar pelicula</h1>
+    <form action="/peliculas/editar/<%= pelicula.id %> " method="POST">
+        <div>
+            <label for="">Titulo</label>
+            <input type="text" name="titulo" value="<%= pelicula.title %>" />
+        </div>
+
+        <div>
+            <label for="">Premios</label>
+            <input type="text" name="premios" value="<%= pelicula.awards %>" />
+        </div>
+
+        <div>
+            <label for="">Duración</label>
+            <input type="text" name="duracion" value="<%= pelicula.length %>" />
+        </div>
+
+        <div>
+            <label for="">Rating</label>
+            <input type="text" name="rating" value="<%= pelicula.rating %>" />
+        </div>
+
+        <div>
+            <label for="">Fecha de estreno</label>
+            <input type="date" name="fecha_estreno" />
+        </div>
+
+        <div>
+            <label for="">Genero</label>
+            <select name="genero">
+                <!-- este for recorrera la base de datos, traera los generos a traves de la variable declarada en el controlador e imprime en cada option el name de cada genero -->
+                <!-- Ahora que se esta editando, usaremos dentro del for, un if diciendo que si el genero que estoy por imprimir es el mismo que tiene la pelicula. Si el genero que estoy queriendo imprimir en el formulario es el que ya tiene la pelicula le vamos a agregar la palabra selected para que este seleccionado -->
+                <% for( let i=0; i < generos.length; i++ ) { %>
+                    <% if (generos[i].id==pelicula.genre_id) { %>
+                        <option value="<%= generos[i].id %>" selected>
+                            <%= generos[i].name %>
+                        </option>
+                        <% } else { %>
+                            <option value="<%= generos[i].id %>">
+                                <%= generos[i].name %>
+                            </option>
+                            <% } %>
+                                <% } %>
+            </select>
+        </div>
+
+        <button type="submit">Actualizar</button>
+    </form>
+
+    <%- include('partials/footer') %>

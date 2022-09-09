@@ -12,10 +12,10 @@ module.exports = function (sequelize, dataTypes) {
             type: dataTypes.STRING
         },
         age: {
-            type: dataTypes.INT
+            type: dataTypes.INTEGER
         },
         weight: {
-            type: dataTypes.INT
+            type: dataTypes.INTEGER
         },
         history: {
             type: dataTypes.STRING
