@@ -1,4 +1,4 @@
-<%- include('partials/header') %>
+<%- include('../partials/header') %>
 
     <h1>Crear pelicula</h1>
     <form action="/movies/create" method="POST">
@@ -19,9 +19,23 @@
         </div>
 
         <div>
+            <label for="">Genero</label>
+            <select name="genre">
+                <!-- este for recorrera la base de datos, traera los generos a traves de la variable declarada en el controlador e imprime en cada option el name de cada genero -->
+                <% for( let i = 0; i < genres.length; i++ ) { %>
+                    <option value="<%= genres[i].id %>">
+                        <%= genres[i].name %> 
+                    </option>
+                <% } %>
+            </select>
+        </div>
+
+        <div>
             <label for="image">Poster de la pelicula</label>
             <input type="file" name="imageM" class="imageM" id="imageM">
         </div>
+
+
 
 
 
@@ -31,4 +45,4 @@
 
     </form>
 
-    <%- include('partials/footer') %>
+    <%- include('../partials/footer') %>

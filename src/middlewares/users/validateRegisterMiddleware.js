@@ -1,8 +1,8 @@
-const {body} = require('express-validator');
 const path = require('path');
+const { body } = require('express-validator');
 
-const validateEdit = [
-    body('firstName')
+module.exports = [
+	body('firstName')
 		.notEmpty().withMessage('Tienes que escribir un nombre').bail()
 		.isAlpha().withMessage('El nombre solo puede contener letras').bail()
 		.isLength(2).withMessage('El nombre debe tener al menos 2 caracteres'),
@@ -12,11 +12,25 @@ const validateEdit = [
 		.isAlpha().withMessage('El apellido solo puede contener letras').bail()
 		.isLength(2).withMessage('El apellido debe tener al menos 2 caracteres'),
 
+	body('email')
+		.notEmpty().withMessage('Tienes que escribir un correo electrónico').bail()
+		.isEmail().withMessage('Debes escribir un formato de correo válido'),
+
 	body('dateBirthday')
 		.notEmpty().withMessage('Debes completar la fecha de nacimiento').bail(),
 
 	body('address')
-		.notEmpty().withMessage('Tienes que escribir una direccion').bail(),
+		.notEmpty().withMessage('Tienes que escribir una direccion'),
+
+	body('interest')
+		.notEmpty().withMessage('Debes seleccionar una categoria').bail(),
+
+	body('password')
+		.notEmpty().withMessage('Tienes que escribir una contraseña').bail()
+		.isLength(8).withMessage('La contraseña debe tener al menos 8 caracteres').bail(),
+
+	body('roleId')
+		.notEmpty().withMessage('Debes elegir un nivel de usuario').bail(),
 
 	body('avatar')
 		.custom((value, { req }) => {
@@ -33,6 +47,5 @@ const validateEdit = [
 
 			return true;
 		})
-]
 
-module.exports = validateEdit;
+]

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en-es">
+
+  <body>
+    <!-- ------------ Comienzo del HEADER  -->
+    <%- include('../partials/header') %>
+
+      <div class="control-formUser">
+        <!-- ------------ Fin del HEADER  -->
+
+        <!-- ------------ Inicio del Formulario de registro  -->
+        <form class="registro" action="/users/register" method="POST" enctype="multipart/form-data">
+
+          <ul class="errores" id="errores">
+          </ul>
+
+          <div class="registerTittle">
+            <h3>Crea tu cuenta</h3>
+          </div>
+
+          <div class="data-form">
+            <label for="name">Nombre</label>
+            <input type="text" name="firstName" class="firstName" id="firstName" placeholder="Ingrese su nombre" <% if
+              (locals.oldData && oldData.firstName) { %>
+            value="<%= oldData.firstName %>"
+              <% } %>
+                >
+
+                <% if (locals.errors && errors.firstName) { %>
+                  <div class="text-alert">
+                    <%= errors.firstName.msg %>
+                  </div>
+                  <% } %>
+
+          </div>
+
+          <div class="data-form">
+            <label for="name">Apellido</label>
+            <input type="text" name="lastName" class="lastName" id="lastName" placeholder="Ingrese su apellido" <% if
+              (locals.oldData && oldData.lastName){ %>
+            value="<%= oldData.lastName %>"
+              <% } %>
+                >
+
+                <% if (locals.errors && errors.lastName) { %>
+                  <div class="text-alert">
+                    <%= errors.lastName.msg %>
+                  </div>
+                  <% } %>
+
+          </div>
+
+
+          <div class="data-form">
+            <label for="email">E-mail</label>
+            <input type="email" name="email" class="email" id="email" placeholder="Correo electrónico" <% if
+              (locals.oldData && oldData.email) { %>
+            value="<%= oldData.email %>"
+              <% } %>
+                >
+
+                <% if (locals.errors && errors.email) { %>
+                  <div class="text-alert">
+                    <%= errors.email.msg %>
+                  </div>
+                  <% } %>
+
+          </div>
+
+
+          <div class="data-form">
+            <label for="dateBirthday" id="fecha-nacimiento">Fecha de nacimiento</label>
+            <div class="campo-texto">
+              <input type="date" name="dateBirthday" class="dateBirthday" id="dateBirthday" <% if (locals.oldData &&
+                oldData.dateBirthday) { %>
+              value="<%= oldData.dateBirthday %>"
+                <% } %>
+                  >
+
+                  <% if (locals.errors && errors.dateBirthday) { %>
+                    <div class="text-alert">
+                      <%= errors.dateBirthday.msg %>
+                    </div>
+                    <% } %>
+
+            </div>
+          </div>
+
+
+          <div class="data-form">
+            <label for="address"> Domicilio </label>
+            <input type="text" name="address" class="control" id="address" <% if (locals.oldData && oldData.address) {
+              %>
+            value="<%= oldData.address %>"
+              <% } %>
+                >
+
+                <% if (locals.errors && errors.address) { %>
+                  <div class="text-alert">
+                    <%= errors.address.msg %>
+                  </div>
+                  <% } %>
+
+          </div>
+
+          <div class="data-form">
+            <div class="interest" <% if (locals.oldData && oldData.interest) { %>
+              value="<%= oldData.interest %>"
+                <% } %>
+                  >
+                  <p> Categorías de interés </p>
+            </div>
+            <select name='interest' id="interest">
+              <option value="">Selecciona una opción</option>
+              <option value="Cine">Cine</option>
+              <option value="Música">Música</option>
+              <option value="Naturaleza">Naturaleza</option>
+              <option value="Arte">Arte</option>
+              <option value="Deportes">Deportes</option>
+            </select>
+
+            <% if (locals.errors && errors.interest) { %>
+              <div class="text-alert">
+                <%= errors.interest.msg %>
+              </div>
+              <% } %>
+
+          </div>
+
+          <div class="data-form">
+            <label for="avatar">Elige tu foto de perfil</label>
+            <input type="file" name="avatar" class="avatar" id="avatar">
+
+            <% if (locals.errors && errors.avatar) { %>
+              <div class="text-alert">
+                <%= errors.avatar.msg %>
+              </div>
+              <% } %>
+
+          </div>
+
+          <div class="data-form">
+            <label for="password">Contraseña</label>
+            <input type="password" name="password" class="password" id="password" placeholder="Contraseña">
+
+            <% if (locals.errors && errors.password) { %>
+              <div class="text-alert">
+                <%= errors.password.msg %>
+              </div>
+              <% } %>
+
+          </div>
+
+          <div class="data-form">
+            <h4>Por favor, selecciona un tipo de cuenta</h4>
+            </br>
+            <input type="radio" name="roleId" class="roleId" value="2" <% if (!locals.oldData || (locals.oldData &&
+              (!oldData.roleId || oldData.roleId==="2" ))) { %>
+            checked
+            <% } %>
+              > Cliente <br>
+              <input type="radio" name="roleId" class="roleId" value="1" <% if (locals.oldData && oldData.roleId==="1" )
+                { %>
+              checked
+              <% } %>
+                > Admin
+
+                <% if (locals.errorMessages && errorMessages.roleId) { %>
+                  <div class="text-alert">
+                    <%= errorMessages.roleId.msg %>
+                  </div>
+                  <% } %>
+          </div>
+
+          </br>
+
+
+          <div class="dataSend">
+            <button type="submit" class="button-form">Registrarse</button>
+            <button type="reset" class="button-form">Reiniciar datos</button>
+          </div>
+
+          </br>
+          <br>
+
+          <div class="has-account">
+            <span>¿Ya tiene una cuenta?</span>
+            <a class="has-account-link" href="/users/login">Inicie sesión</a>
+          </div>
+
+
+
+        </form>
+
+      </div>
+
+
+      <!-- ------------ Final del Formulario de registro  -->
+
+
+      <!-- ------------ comienzo del banner divisor y FOOTER  -->
+      <%- include('../partials/footer') %>
+
+        <!-- ------------ Fin del FOOTER  -->
+
+        <script src="/js/validationUserRegister.js"></script>
+  </body>
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en-es">
+
+	<body>
+		<!-- ------------ Comienzo del HEADER  -->
+		<%- include('../partials/header') %>
+			<!-- ------------ fin del HEADER  -->
+
+			<!-- ------------ Comienzo del MAIN  -->
+
+			<div class="container-user-information">
+				<div class="first-container">
+					<div class="user-greeting">
+						<h2>Hola <%= locals.userLogged.firstName %>!</h2>
+					</div>
+
+					<div class="avatar-user">
+						<img src="/images/users/<%=locals.userLogged.avatar%>" alt="imagen de usuario" />
+					</div>
+
+				</div>
+
+
+				<div class="user-information">
+					<h3>tus datos personales</h3>
+					<p>Modifica tus datos personales a continuación para que tu cuenta esté siempre actualizada </p>
+				</div>
+
+				<div class="user-details">
+					<h3>detalles</h3>
+					<ul>
+						<li>
+							<%= locals.userLogged.firstName %>
+								<%= locals.userLogged.lastName %>
+						</li>
+						<li>
+							<%= locals.userLogged.dateBirthday %>
+						</li>
+						<li>
+							<ul>Tu interes:
+							</br>
+								<li class="interest-impressed">
+									<%= locals.userLogged.interest %>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+
+				<div class="user-data-access">
+					<h3>correo electrónico</h3>
+					<p>
+						<%= locals.userLogged.email %>
+					</p>
+				</div>
+
+				<div class="user-password">
+					<!-- ver como hacer para que muestre puntos en lugar del password encryptado-->
+					<h3>Contraseña</h3>
+					<p>············</p>
+				</div>
+
+				<div class="user-setting-account">
+
+					<h3>gestionar cuenta</h3>
+
+					<div class="edit-profile">
+						<a href="/users/edit">editar datos</a>
+					</div>
+
+					<br>
+
+					<div class="user-delete">
+						<form class="delete-account" action="/users/delete" method="POST" enctype="multipart/form-data">
+							<button id="delete-account">eliminar cuenta</button>
+						</form>
+					</div>
+				</div>
+
+
+
+			</div>
+
+			<!-- //Container -->
+
+			<!-- ------------ Fin del MAIN  -->
+
+			<!-- ------------ comienzo del banner divisor y FOOTER  -->
+			<%- include('../partials/footer') %>
+
+				<!-- ------------ Fin del FOOTER  -->
+
+				<script src="/js/validationDeleteAccount.js"></script>
+	</body>

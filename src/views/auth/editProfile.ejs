@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en-es">
+
+    <body>
+        <!-- ------------ Comienzo del HEADER  -->
+        <%- include('../partials/header') %>
+
+            <div class="control-formUser">
+                <!-- ------------ Fin del HEADER  -->
+
+                <!-- ------------ Inicio del Formulario de registro  -->
+                <form class='formEditProfile' id="formEditProfile" action="/users/edit?_method=PUT" method="POST"
+                    enctype="multipart/form-data">
+
+
+                    <ul class="errores" id="errores">
+                    </ul>
+
+                    <div class="editProfileTittle">
+                        <h3>Modifica aca tus datos para mantenerlos actualizados</h3>
+                    </div>
+                    <br>
+
+
+                    <div class="data-form">
+                        <label for="name">Nombre</label>
+                        <input type="text" name="firstName" class="firstName" id="firstName"
+                            value="<%= locals.userLogged.firstName %>">
+
+                        <% if (locals.errors && errors.firstName) { %>
+                            <div class="text-alert">
+                                <%= errors.firstName.msg %>
+                            </div>
+                            <% } %>
+
+                    </div>
+
+                    <div class="data-form">
+                        <label for="name">Apellido</label>
+                        <input type="text" name="lastName" class="lastName" id="lastName"
+                            value="<%= locals.userLogged.lastName %>">
+
+                        <% if (locals.errors && errors.lastName) { %>
+                            <div class="text-alert">
+                                <%= errors.lastName.msg %>
+                            </div>
+                            <% } %>
+
+                    </div>
+
+
+                    <div class="data-form">
+                        <label for="dateBirthday" id="fecha-nacimiento">Fecha de nacimiento</label>
+                        <div class="campo-texto">
+                            <input type="date" name="dateBirthday" class="dateBirthday" id="dateBirthday"
+                                value="<%= locals.userLogged.dateBirthday %>">
+
+                            <% if (locals.errors && errors.dateBirthday) { %>
+                                <div class="text-alert">
+                                    <%= errors.dateBirthday.msg %>
+                                </div>
+                                <% } %>
+
+                        </div>
+                    </div>
+
+
+                    <div class="data-form">
+                        <label for="address"> Domicilio </label>
+                        <input type="text" name="address" class="control" id="address"
+                            value="<%= locals.userLogged.address %>">
+
+                        <% if (locals.errors && errors.address) { %>
+                            <div class="text-alert">
+                                <%= errors.address.msg %>
+                            </div>
+                            <% } %>
+
+                    </div>
+
+                    <div class="data-form">
+                        <label>Tu interes actual es: <b>
+                                <%= locals.userLogged.interest %>
+                            </b>
+                        </label>
+
+                        <label for="interest">Tu nuevo interés puede ser:</label>
+                        <select name='interest' id="interest" value="<% locals.userLogged.interest %>">
+                            <option value="">Selecciona una opción</option>
+                            <option value="Cine">Cine</option>
+                            <option value="Música">Música</option>
+                            <option value="Naturaleza">Naturaleza</option>
+                            <option value="Arte">Arte</option>
+                            <option value="Deportes">Deportes</option>
+                        </select>
+
+                        <% if (locals.errors && errors.interest) { %>
+                            <div class="text-alert">
+                                <%= errors.interest.msg %>
+                            </div>
+                            <% } %>
+
+                    </div>
+
+
+                    <div class="data-form">
+                        <label for="avatar">Elige tu foto de perfil</label>
+                        <input type="file" name="avatar" class="avatar" id="avatar"
+                            value="<%= locals.userLogged.avatar %>">
+
+                        <% if (locals.errors && errors.avatar) { %>
+                            <div class=" text-alert">
+                                <%= errors.avatar.msg %>
+                            </div>
+                            <% } %>
+
+                    </div>
+
+
+                    </br>
+
+
+                    <div class="dataSend">
+                        <button type="submit" class="button-form">Guardar cambios</button>
+                        <button type="reset" class="button-form">Deshacer cambios</button>
+                    </div>
+
+                </form>
+
+            </div>
+
+            <!-- ------------ Final del Formulario de registro  -->
+
+            <!-- ------------ comienzo del banner divisor y FOOTER  -->
+            <%- include('../partials/footer') %>
+
+                <!-- ------------ Fin del FOOTER  -->
+
+                <script src="/js/validationUserEditProfile.js"></script>
+
+    </body>
+
+</html>

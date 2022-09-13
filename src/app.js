@@ -34,8 +34,8 @@ const mainRouter = require("./routes/index.js")
 app.use("/", mainRouter);
 
 // Users routes
-const usersRouter = require("./routes/users.js");
-app.use("/users", usersRouter);
+const authRouter = require("./routes/auth.js");
+app.use("/auth", authRouter);
 
 // Movies routes
 const moviesRouter = require("./routes/movies.js");

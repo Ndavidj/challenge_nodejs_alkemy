@@ -1,4 +1,4 @@
-<%- include('partials/header') %>
+<%- include('../partials/header') %>
 
     <h1>
         <%= movies.title %>
@@ -10,14 +10,8 @@
         <li>Rating: <%= movies.rating %>
         </li>
 
-        
-
-        <!-- CONTINUAR EN DETALLE DE PELICULA PARA QUE TRAIGA EL GENERO -->
-
-
-
         <!-- para el genero, obtengo de la relacion genero y del genero pido el nombre -->
-        <li>Genero: <%= movies.genres.name %>
+        <li>Genero: <%= movies.genre.name %>
         </li>
         <!-- Por ultimo los actores, pero como los actores pueden ser muchos ya que la relacion asi lo indica .Para cada uno de los actores, haremos un for que va a ir desde el primer actor hasta la cantidad de actores que tenga la pelicula. Osea se pide de la pelicula, la relacion en este caso actores y pido la cantidad. y por cada actor imprimo un li que imprima de la pelicula los actores que correspondan [i], el primer y segundo nombre -->
         <li>
@@ -25,8 +19,11 @@
             <ul>
                 <% for( let i=0; i < movies.characters.length; i++ ) { %>
                     <li>
-                        <%= movies.characters[i].name %>
-                            <%= movies.characters[i].image %>
+                        <%= movies.character[i].name %>
+                        <img src="/images/characters/<%= characters.image %>" alt="product image" />
+                        <%= movies.characters[i].age %>
+                        <%= movies.characters[i].weight %>
+                        <%= movies.characters[i].history%>
                     </li>
 
                     <% } %>
@@ -46,4 +43,4 @@
         <button type="submit">Borrar</button>
 
     </form>
-    <%- include('partials/footer') %>
+    <%- include('../partials/footer') %>

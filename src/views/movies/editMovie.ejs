@@ -1,0 +1,47 @@
+<%- include('../partials/header') %>
+    <!-- En el proceso de edicion los values deben estar rellenos. Debero llevar impreso el campo en cuestion-->
+    <h1>Editar pelicula</h1>
+    <form action="/movies/edit/<%= movie.id %> " method="POST">
+        <div>
+            <label for="">Titulo</label>
+            <input type="text" name="title" value="<%= movie.title %>" />
+        </div>
+
+         <div>
+            <label for="">Rating</label>
+            <input type="text" name="rating" value="<%= movie.rating %>" />
+        </div>
+
+        <div>
+            <label for="">Fecha de estreno</label>
+            <input type="date" name="releaseDate" />
+        </div>
+
+        <div>
+            <label for="image">Poster de la pelicula</label>
+            <input type="file" name="imageM" class="imageM" id="imageM">
+        </div>
+
+        <div>
+            <label for="">Genero</label>
+            <select name="genre">
+                <!-- este for recorrera la base de datos, traera los generos a traves de la variable declarada en el controlador e imprime en cada option el name de cada genero -->
+                <!-- Ahora que se esta editando, usaremos dentro del for, un if diciendo que si el genero que estoy por imprimir es el mismo que tiene la pelicula. Si el genero que estoy queriendo imprimir en el formulario es el que ya tiene la pelicula le vamos a agregar la palabra selected para que este seleccionado -->
+                <% for( let i=0; i < genres.length; i++ ) { %>
+                    <% if (genres[i].id==movie.genreId) { %>
+                        <option value="<%= genres[i].id %>" selected>
+                            <%= genres[i].name %>
+                        </option>
+                        <% } else { %>
+                            <option value="<%= genres[i].id %>">
+                                <%= genres[i].name %>
+                            </option>
+                            <% } %>
+                                <% } %>
+            </select>
+        </div>
+
+        <button type="submit">Actualizar</button>
+    </form>
+
+    <%- include('../partials/footer') %>
