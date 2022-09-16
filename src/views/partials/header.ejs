@@ -1,21 +1,31 @@
 <html lang="en">
 
 <head>
-    <title>Alkemy NodeJS!</title>
-    <link rel="stylesheet" href="/stylesheets/style.css">
+  <title>Alkemy NodeJS!</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 
 <body>
 
-    <header>
-        <a href="/"><p>Mi sitio!</p>
-        </a>
-        <nav>
-            <ul>
-                <li><a href="/movies/create">Crear Peli</a></li>
-                <li><a href="/movies">Ver Pelis</a></li>
-            </ul>
+  <header>
+    <a href="/">
+      <p>Mi sitio!</p>
+    </a>
+    <div>
+      <% if (!locals.userLogged) { %>
+        <h3>Inicie sesión para comenzar</h3>
+        <ul>
+          <li><a href="/auth/login">Iniciar sesión</a></li>
+          <li><a href="/auth/register">Crear cuenta</a></li>
+        </ul>
+        <% } else { %>
+          <ul>
+            <li><a href="/movies/create">Crear nueva peli</a></li>
+            <li><a href="/movies/">Ver pelis</a></li>
+            <li><a href="/auth/logout">Salir</a></li>
+          </ul>
+          <% } %>
 
-        </nav>
+    </div>
 
-    </header>
+  </header>

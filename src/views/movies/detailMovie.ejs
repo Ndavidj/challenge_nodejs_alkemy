@@ -13,9 +13,9 @@
         <!-- para el genero, obtengo de la relacion genero y del genero pido el nombre -->
         <li>Genero: <%= movies.genre.name %>
         </li>
-        <!-- Por ultimo los actores, pero como los actores pueden ser muchos ya que la relacion asi lo indica .Para cada uno de los actores, haremos un for que va a ir desde el primer actor hasta la cantidad de actores que tenga la pelicula. Osea se pide de la pelicula, la relacion en este caso actores y pido la cantidad. y por cada actor imprimo un li que imprima de la pelicula los actores que correspondan [i], el primer y segundo nombre -->
+        <!-- Por ultimo los personajes, pero como los personajes pueden ser muchos ya que la relacion asi lo indica .Para cada uno de los personajes, haremos un for que va a ir desde el primer actor hasta la cantidad de personajes que tenga la pelicula. Osea se pide de la pelicula, la relacion en este caso personajes y pido la cantidad. y por cada actor imprimo un li que imprima de la pelicula los personajes que correspondan [i], el primer y segundo nombre -->
         <li>
-            Actores
+            personajes
             <ul>
                 <% for( let i=0; i < movies.characters.length; i++ ) { %>
                     <li>
